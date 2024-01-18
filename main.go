@@ -1,12 +1,15 @@
 package main
 
 import (
-	"fmt"
+	"log"
+	"net/http"
 
-	"github.com/piyawat5/cinema/movie"
+	"github.com/piyawat5/myproject/routes/movie"
 )
 
 func main() {
-	fmt.Println("testttt")
-	movie.Review()
+	http.HandleFunc("/movies",movie.MoivesHandler)
+
+	err:=http.ListenAndServe("localhost:3100",nil)
+	log.Fatal(err)
 }
